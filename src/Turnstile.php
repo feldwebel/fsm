@@ -1,6 +1,6 @@
 <?php
 
-use Action\Action;
+use Requests\BaseRequest;
 use States\AlarmState;
 use States\ClosedState;
 use States\IState;
@@ -10,17 +10,17 @@ class Turnstile
 {
     private $state;
 
-    public static function createClosed()
+    public static function closed()
     {
         return new self(new ClosedState());
     }
 
-    public static function createOpened()
+    public static function opened()
     {
         return new self(new OpenedState());
     }
 
-    public static function createAlarm()
+    public static function alarm()
     {
         return new self(new AlarmState());
     }
@@ -30,9 +30,9 @@ class Turnstile
         $this->state = $state;
     }
 
-    public function operate(Action $action)
+    public function operate(BaseRequest $request)
     {
-        $this->state = $this->state->process($action);
+        $this->state = $this->state->process($request);
 
         return $this->state->getResponse();
     }

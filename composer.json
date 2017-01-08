@@ -1,0 +1,26 @@
+{
+    "name": "root/turnstile",
+    "description": "Finite State Machine example",
+    "type": "project",
+    "require": {
+        "php": ">7.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Tereschenko",
+            "email": "daniel@tereschenko.info"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}

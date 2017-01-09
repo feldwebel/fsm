@@ -10,46 +10,39 @@ use Responses\ClosedResponse;
 use Responses\OpenedResponse;
 use Turnstile;
 
-class TurnstileTest extends TestCase
+class UserScenarioTest extends TestCase
 {
-
     /**
      * @test
      */
-    public function closed2Opened()
+    public function mainSuccessScenario()
     {
         $device = Turnstile::closed();
 
         $this->assertInstanceOf(OpenedResponse::class, $device->operate(new CoinRequest()));
-    }
-
-    /**
-     * @test
-     */
-    public function closed2Alarm()
-    {
-        $device = Turnstile::closed();
-
-        $this->assertInstanceOf(AlarmResponse::class, $device->operate(new PassThroughRequest()));
-    }
-
-    /**
-     * @test
-     */
-    public function opened2Closed()
-    {
-        $device = Turnstile::opened();
-
         $this->assertInstanceOf(ClosedResponse::class, $device->operate(new PassThroughRequest()));
     }
 
     /**
      * @test
      */
-    public function alarm2Opened()
+    public function raisingAnAlarmScenario()
     {
-        $device = Turnstile::alarm();
+        $device = Turnstile::closed();
+
+        $this->assertInstanceOf(AlarmResponse::class, $device->operate(new PassThroughRequest()));
+        $this->assertInstanceOf(OpenedResponse::class, $device->operate(new CoinRequest()));
+    }
+
+    /**
+     * @test
+     */
+    public function gracefullyEatingMoney()
+    {
+        $device = Turnstile::closed();
 
         $this->assertInstanceOf(OpenedResponse::class, $device->operate(new CoinRequest()));
+        $this->assertInstanceOf(OpenedResponse::class, $device->operate(new CoinRequest()));
+        $this->assertInstanceOf(ClosedResponse::class, $device->operate(new PassThroughRequest()));
     }
 }

@@ -5,5 +5,4 @@ namespace Requests;
 class BaseRequest
 {
 
-
 }

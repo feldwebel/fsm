@@ -11,14 +11,13 @@ class ClosedState extends BaseState
 {
     public function process(BaseRequest $request)
     {
-        if ($request instanceof CoinRequest) {
-
-            return new OpenedState();
-        }
-
-        if ($request instanceof PassThroughRequest) {
-
-            return new AlarmState();
+        switch(get_class($request)) {
+            case CoinRequest::class:
+                return new OpenedState();
+            case PassThroughRequest::class:
+                return new AlarmState();
+            default:
+                return $this;
         }
     }
     

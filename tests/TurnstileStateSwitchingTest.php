@@ -10,9 +10,8 @@ use Responses\ClosedResponse;
 use Responses\OpenedResponse;
 use Turnstile;
 
-class TurnstileTest extends TestCase
+class TurnstileStateSwitchingTest extends TestCase
 {
-
     /**
      * @test
      */

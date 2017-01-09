@@ -37,7 +37,7 @@ class UserScenarioTest extends TestCase
     /**
      * @test
      */
-    public function gracefullyEatingMoney()
+    public function gracefullyEatingMoneyScenario()
     {
         $device = Turnstile::closed();
 

@@ -2,7 +2,4 @@
 
 namespace Requests;
 
-class BaseRequest
-{
-
-}
+class BaseRequest {/*_*/}

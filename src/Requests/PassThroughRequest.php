@@ -2,7 +2,4 @@
 
 namespace Requests;
 
-class PassThroughRequest extends BaseRequest
-{
-
-}
+class PassThroughRequest extends BaseRequest {/*_*/}

@@ -1,6 +1,7 @@
 <?php
 
 use Requests\BaseRequest;
+use Responses\BaseResponse;
 use States\AlarmState;
 use States\ClosedState;
 use States\IState;
@@ -30,7 +31,7 @@ class Turnstile
         $this->state = $state;
     }
 
-    public function operate(BaseRequest $request)
+    public function operate(BaseRequest $request) : BaseResponse
     {
         $this->state = $this->state->process($request);
 

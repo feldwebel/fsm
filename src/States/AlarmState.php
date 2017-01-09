@@ -5,11 +5,12 @@ namespace States;
 use Requests\BaseRequest;
 use Requests\CoinRequest;
 use Responses\AlarmResponse;
+use Responses\BaseResponse;
 
 class AlarmState extends BaseState
 {
 
-    public function process(BaseRequest $request)
+    public function process(BaseRequest $request): IState
     {
         switch (get_class($request)) {
             case CoinRequest::class:
@@ -19,7 +20,7 @@ class AlarmState extends BaseState
         }
     }
 
-    public function getResponse()
+    public function getResponse(): BaseResponse
     {
         return new AlarmResponse();
     }

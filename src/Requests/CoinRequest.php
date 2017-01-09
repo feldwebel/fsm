@@ -2,7 +2,4 @@
 
 namespace Requests;
 
-class CoinRequest extends BaseRequest
-{
-
-}
+class CoinRequest extends BaseRequest {/*_*/}

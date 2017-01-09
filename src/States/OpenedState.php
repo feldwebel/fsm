@@ -5,12 +5,13 @@ namespace States;
 use Requests\BaseRequest;
 use Requests\CoinRequest;
 use Requests\PassThroughRequest;
+use Responses\BaseResponse;
 use Responses\OpenedResponse;
 
 class OpenedState extends BaseState
 {
 
-    public function process(BaseRequest $request)
+    public function process(BaseRequest $request): IState
     {
         switch (get_class($request)) {
             case CoinRequest::class:
@@ -22,7 +23,7 @@ class OpenedState extends BaseState
         }
     }
 
-    public function getResponse()
+    public function getResponse(): BaseResponse
     {
         return new OpenedResponse();
     }

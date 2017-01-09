@@ -11,10 +11,10 @@ interface IState
      * @param BaseRequest $request
      * @return IState
      */
-    public function process(BaseRequest $request);
+    public function process(BaseRequest $request): IState;
 
     /**
      * @return BaseResponse
      */
-    public function getResponse();
+    public function getResponse(): BaseResponse;
 }

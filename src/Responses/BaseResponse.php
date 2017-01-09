@@ -6,7 +6,7 @@ class BaseResponse
 {
     const RESPONSE = 'Base Response';
 
-    public function getResponse()
+    public function getMessage()
     {
         return static::RESPONSE;
     }
